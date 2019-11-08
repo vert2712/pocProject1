@@ -3,5 +3,6 @@ public class mainScr {
     {
         System.out.println("string");
         System.out.println("string2");
+        System.out.println("string3");
     }
 }
