@@ -17,6 +17,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.*;
 import static java.lang.Math.*;
+import POCs.*;
 
 import org.apache.commons.collections4.iterators.CollatingIterator;
 
@@ -103,6 +104,17 @@ public class mainScr {
                         .boxed()
                         .collect(Collectors.toMap (i -> i, i -> iList[(int) i]));
         System.out.println(map);
+
+        //array copying
+        int[] nArray=Arrays.copyOf(iList,iList.length);
+        Arrays.sort(nArray);
+        int[][] mArray = new int[][]{{10,20},{40,50},{70,80,90}};
+        int[][] mArray2 = new int[3][4];
+        mArray2[1][2]=15;
+        System.out.println(Arrays.deepToString(mArray));
+        System.out.println(Arrays.deepToString(mArray2));
+
+        classSrc.getEmployees();
 
         System.exit(2);
     }
