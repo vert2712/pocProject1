@@ -7,10 +7,14 @@
  */
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.*;
 import static java.lang.Math.*;
 
@@ -20,7 +24,7 @@ import javax.swing.text.html.Option;
 
 public class mainScr {
 
-    public final static int CM_CONST  = 123456;
+    private final static int CM_CONST  = 123456;
 
     public static void main(String[] args) {
         int a = 12;
@@ -58,6 +62,7 @@ public class mainScr {
 
         double d = 10_000 / 3.0;
         System.out.printf("%8.2f",d);
+        System.out.println("BigNumbers test: "+BigDecimal.valueOf(10_000).divide(BigDecimal.valueOf(3.0), RoundingMode.CEILING));
         System.out.println();
        /* try
         {
@@ -76,6 +81,28 @@ public class mainScr {
             default -> getDefaultSwitch();
         };
         System.out.println(stErr);
+
+
+        forBlock:
+        for(int i=0;i<100;i++) {
+            System.out.println(i);
+
+            while (true) {
+                break forBlock;
+            }
+        }
+
+        for(int k : iList){
+            System.out.println(k);
+        }
+
+        IntStream.range(0,iList.length).forEach((i)->System.out.println("Index: "+ i+", value: "+iList[i]));
+
+        Map<Integer,Integer> map =
+                IntStream.range(0,iList.length)
+                        .boxed()
+                        .collect(Collectors.toMap (i -> i, i -> iList[(int) i]));
+        System.out.println(map);
 
         System.exit(2);
     }
