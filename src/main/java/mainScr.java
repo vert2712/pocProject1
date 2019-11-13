@@ -74,9 +74,16 @@ public class mainScr {
         }
         */
         int errorCode=501;
+        int[] errorCodesPack={1,2,3,501};
+
+        if (Arrays.stream(errorCodesPack).anyMatch(x->x==errorCode)){
+            System.out.println("Error in errorPack");
+        }
+
         String stErr = switch (errorCode) {
             case 404 ->  "error 404";
             case 500 ->  "error 500";
+            case 501, 502 -> "error 50x";
             default -> getDefaultSwitch();
         };
         System.out.println(stErr);
