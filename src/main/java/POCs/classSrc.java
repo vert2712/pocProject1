@@ -3,6 +3,7 @@ package POCs;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import static java.lang.System.out;
 
 public class classSrc {
     public static void getDefault(){
@@ -15,8 +16,8 @@ public class classSrc {
                 {
                   new Employee("Paul Reed", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
                   new Employee("Samuel Gerard", LocalDate.parse("2000-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 2300),
-                  Employee.getNewManager(),
-                  Employee.getNewBoss()
+                  Employee.createStarterEmployee(),
+                  Employee.createAdvancedEmployee()
                 };
 
         for(Employee e:empList){
@@ -24,54 +25,33 @@ public class classSrc {
         }
         System.out.println(Employee.getCounter());
     }
-}
 
-class Employee{
-    private final String name;
-    private final LocalDate hireDate;
-    private LocalDate rehireDate;
-    private double salary;
-    private static int counter=0;
-    private int id = setID();
+    public static void getManagers(){
+        Manager[] managerList=new Manager[]
+                {
+                        new Manager("Boss1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
+                        new Manager("Boss2", LocalDate.parse("2000-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 2300)
+                };
 
-    private int setID(){
-        System.out.println("ID field was set");
-        return Employee.counter++;
+        for(Manager e:managerList){
+            System.out.println(e.getSalary());
+        }
+        System.out.println(Employee.getCounter());
     }
 
-    public Employee(String name, LocalDate hireDate, double salary){
-        System.out.println("Employee parametrized constructor was called");
-        this.name=name;
-        this.hireDate=hireDate;
-        this.salary=salary;
-
-    }
-
-    public static int getCounter(){
-        return counter;
-    }
-
-    public static Employee getNewManager(){
-        return new Employee(
-            "Manager", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 5000
-        );
-    }
-    public static Employee getNewBoss(){
-        return new Employee(
-            "Boss", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 10000
-        );
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public LocalDate getHireDate(){
-        return this.hireDate;
-    }
-
-    public void raiseSalary(double perc){
-        double raise=this.salary*perc/100;
-        this.salary+=raise;
+    public static void getMixed(){
+        Manager[] managers=new Manager[]
+                {
+                        new Manager("Boss1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
+                        new Manager("Boss2", LocalDate.parse("2000-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 2300)
+                };
+        Employee emp=new Employee("Paul Ross",LocalDate.parse("2010-01-01"),2500);
+        Employee[] empList=managers;
+        //empList[0]=emp; //lead to runtime ArrayStoreException as managers and empList are referencing the same object
+        for(Manager m:managers){
+            out.println(m.getClass().getName());
+            //m.setBonus(10);
+        }
     }
 }
+
