@@ -6,22 +6,20 @@
     here will be implemented something cool
  */
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.*;
-import static java.lang.Math.*;
 import POCs.*;
 
-import org.apache.commons.collections4.iterators.CollatingIterator;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import javax.swing.text.html.Option;
+import static java.lang.Math.floorMod;
 
 public class mainScr {
 
@@ -114,9 +112,17 @@ public class mainScr {
         System.out.println(Arrays.deepToString(mArray));
         System.out.println(Arrays.deepToString(mArray2));
 
-        classSrc.getEmployees();
+        //classSrc.getEmployees();
+        //classSrc.getManagers();
+        classSrc.getMixed();
+
+        Runtime.getRuntime().addShutdownHook(new Thread(()->logExit()));
 
         System.exit(2);
+    }
+
+    public static void logExit(){
+        System.out.println("Exit logged");
     }
 
     public static String getDefaultSwitch(){

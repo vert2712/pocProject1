@@ -7,7 +7,20 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.stream.Stream;
 
+
+/**
+ * @author PaulReed
+ * @version 1.00
+ *
+ */
 public class fileIO {
+
+    /**
+     *
+     * @param path related to directory
+     * @return value as Stream
+     * @throws IOException for reading
+     */
     public static Stream<String> readFile(String path) throws IOException {
         return Files
                 .lines(Paths.get(path))
