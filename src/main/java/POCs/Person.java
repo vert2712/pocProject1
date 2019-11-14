@@ -13,4 +13,8 @@ public abstract class Person {
 
     public abstract String getDescription();
 
+    @Override
+    public String toString(){
+        return this.getClass().getName()+" name: "+this.getName();
+    }
 }
