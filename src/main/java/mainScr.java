@@ -121,7 +121,9 @@ public class mainScr {
 
         //classSrc.getEmployees();
         //classSrc.getManagers();
-        classSrc.getMixed();
+        //classSrc.getMixed();
+        //classSrc.getMixedArray();
+        classSrc.getDiffPersons();
 
         Runtime.getRuntime().addShutdownHook(new Thread(()->logExit()));
 

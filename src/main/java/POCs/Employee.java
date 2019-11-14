@@ -9,8 +9,7 @@ import static java.lang.System.out;
  * A {@code}Employee is used to describe Employee
  * @author PaulReed
  */
-class Employee{
-    private final String name;
+class Employee extends Person{
     private final LocalDate hireDate;
     private LocalDate rehireDate;
     private double salary;
@@ -42,8 +41,8 @@ class Employee{
     }
 
     public Employee(String name, LocalDate hireDate, double salary){
+        super(name);
         System.out.println("Employee parametrized constructor was called");
-        this.name=name;
         this.hireDate=hireDate;
         this.salary=salary;
         this.id = setID();
@@ -65,8 +64,8 @@ class Employee{
         );
     }
 
-    public String getName(){
-        return this.name;
+    public String getDescription() {
+        return " employee class with "+ this.getName();
     }
 
     public LocalDate getHireDate(){
@@ -84,5 +83,15 @@ class Employee{
     public void raiseSalary(double perc){
         double raise=this.salary*perc/100;
         this.salary+=raise;
+    }
+
+    public boolean equal(Object other){
+        if (other==null) return false;
+        if (this == other) return true;
+        if (this.getClass()!=other.getClass()) return false;
+
+        Employee e=(Employee)other;
+        if(this.getName()==e.getName()) return true;
+        else return false;
     }
 }

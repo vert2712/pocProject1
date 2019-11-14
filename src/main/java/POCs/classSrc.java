@@ -53,5 +53,32 @@ public class classSrc {
             //m.setBonus(10);
         }
     }
+
+    public static void getMixedArray() {
+        Employee[] empList=new Employee[]
+                {
+                        new Manager("Boss1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
+                        new Employee("Boss1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500)
+                };
+
+        for(Employee e: empList) {
+            if (e instanceof Manager) {
+                Manager m=(Manager)e;
+                out.println(m.getName());
+            }
+        }
+    }
+
+    public static void getDiffPersons(){
+        Person[] empList=new Person[]
+                {
+                        new Manager("Boss1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
+                        new Employee("Employee1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
+                        new Student("Student1","major role")
+                };
+        for(Person p:empList){
+            out.println(p.getName());
+        }
+    }
 }
 
