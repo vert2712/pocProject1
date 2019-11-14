@@ -18,4 +18,11 @@ public class Manager extends Employee {
     public double getSalary() {
         return super.getSalary() + this.bonus;
     }
+
+    public boolean equals(Object other){
+        if (!super.equals(other)) return false;
+
+        Manager m=(Manager)other;
+        return m.getSalary()==this.getSalary() && m.getHireDate()==this.getHireDate();
+    }
 }
