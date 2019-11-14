@@ -76,8 +76,9 @@ public class classSrc {
                         new Employee("Employee1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
                         new Student("Student1","major role")
                 };
+
         for(Person p:empList){
-            out.println(p.getName());
+            out.println(p.toString());
         }
     }
 }

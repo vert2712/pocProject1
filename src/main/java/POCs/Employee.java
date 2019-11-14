@@ -2,6 +2,7 @@ package POCs;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 import static java.lang.System.out;
 
@@ -64,6 +65,7 @@ class Employee extends Person{
         );
     }
 
+    @Override
     public String getDescription() {
         return " employee class with "+ this.getName();
     }
@@ -85,7 +87,8 @@ class Employee extends Person{
         this.salary+=raise;
     }
 
-    public boolean equal(Object other){
+    @Override
+    public boolean equals(Object other){
         if (other==null) return false;
         if (this == other) return true;
         if (this.getClass()!=other.getClass()) return false;
@@ -93,5 +96,9 @@ class Employee extends Person{
         Employee e=(Employee)other;
         if(this.getName()==e.getName()) return true;
         else return false;
+    }
+    @Override
+    public int hashCode(){
+        return Objects.hash(getName(),getSalary(),getHireDate());
     }
 }
