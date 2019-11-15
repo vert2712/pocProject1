@@ -2,8 +2,30 @@ package POCs;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import static java.lang.System.out;
+
+
+enum Size{
+    SMALL("S","some small description here"),MEDIUM("M", "some medium text here");
+
+    private String abbreviation;
+    private String description;
+
+    Size(String abbreviation, String description){
+        this.abbreviation=abbreviation;
+        this.description=description;
+    }
+
+    public String getAbbreviation(){
+        return this.abbreviation;
+    }
+
+    public String getDescription(){
+        return this.description;
+    }
+}
 
 public class classSrc {
     public static void getDefault(){
@@ -70,7 +92,7 @@ public class classSrc {
     }
 
     public static void getDiffPersons(){
-        Person[] empList=new Person[]
+        /*Person[] empList=new Person[]
                 {
                         new Manager("Boss1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
                         new Employee("Employee1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500),
@@ -79,7 +101,20 @@ public class classSrc {
 
         for(Person p:empList){
             out.println(p.toString());
-        }
+        }*/
+    }
+
+    public void doJob() {
+        Size s=Enum.valueOf(Size.class,"SMALL");
+        out.println(s.getDescription());
+        Size s2 =Size.values()[0];
+    }
+
+    public void find(int idx){
+        Class cl=Employee.class;
+        Employee e =new  Employee("Employee1", LocalDate.parse("1900-01-01", DateTimeFormatter.ofPattern("yyyy-MM-DD")), 1500);
+        Class cl2=e.getClass();
+        //cl.getDeclaredConstructor().newInstance();
     }
 }
 
