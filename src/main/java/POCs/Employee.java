@@ -1,5 +1,7 @@
 package POCs;
 
+import java.lang.reflect.ReflectPermission;
+import java.security.Permission;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -10,7 +12,7 @@ import static java.lang.System.out;
  * A {@code}Employee is used to describe Employee
  * @author PaulReed
  */
-class Employee extends Person{
+public class Employee extends Person implements Comparable<Employee>{
     private final LocalDate hireDate;
     private LocalDate rehireDate;
     private double salary;
@@ -43,6 +45,7 @@ class Employee extends Person{
 
     public Employee(String name, LocalDate hireDate, double salary){
         super(name);
+        //System.setSecurityManager(new SecurityManager());
         System.out.println("Employee parametrized constructor was called");
         this.hireDate=hireDate;
         this.salary=salary;
@@ -100,5 +103,10 @@ class Employee extends Person{
     @Override
     public int hashCode(){
         return Objects.hash(getName(),getSalary(),getHireDate());
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return Double.compare(this.salary,o.salary);
     }
 }

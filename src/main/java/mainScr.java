@@ -8,14 +8,13 @@
 
 import POCs.*;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -119,13 +118,30 @@ public class mainScr {
         System.out.println(Arrays.deepToString(mArray));
         System.out.println(Arrays.deepToString(mArray2));
 
-        //classSrc.getEmployees();
+        classSrc.getEmployees();
         //classSrc.getManagers();
         //classSrc.getMixed();
-        //classSrc.getMixedArray();
-        classSrc.getDiffPersons();
+        //classSrc.getDiffPersons();
+
+        try {
+            classSrc.getReflection();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
 
         Runtime.getRuntime().addShutdownHook(new Thread(()->logExit()));
+
+        //classSrc.getMixedArray();
+        //classSrc.genericArrayCopy();
+        //classSrc.getStudents();
 
         System.exit(2);
     }

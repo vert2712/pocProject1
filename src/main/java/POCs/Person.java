@@ -17,4 +17,7 @@ public abstract class Person {
     public String toString(){
         return this.getClass().getName()+" name: "+this.getName();
     }
+
+
+
 }
